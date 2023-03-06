@@ -28,9 +28,9 @@ public class Review05 {
             pstmt = con.prepareStatement(sql);
 
             System.out.println("検索キーワードを入力してください＞");
-            String id = keyIn();
+            int id = keyInNum();
 
-            pstmt.setString(1, id);
+            pstmt.setInt(1, id);
 
             rs = pstmt.executeQuery();
 
@@ -68,6 +68,17 @@ public class Review05 {
             }
         }
     }
+
+    private static int keyInNum() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(keyIn());
+        } catch (NumberFormatException e) {
+
+        }
+        return result;
+    }
+
     private static String keyIn() {
         String line = null;
         try {
